@@ -1,0 +1,35 @@
+{
+  "name": "osa3",
+  "version": "1.0.0",
+  "description": "Part3 of fullstackweb course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build:ui": "rm -rf build && cd ../frontend && npm run build && cp -r dist ../osa3/build",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elemiron/FullStack/tree/main/osa3.git"
+  },
+  "author": "Elena Mironenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elemiron/FullStack/tree/main/osa3/issues"
+  },
+  "homepage": "https://github.com/Elemiron/FullStack/tree/main/osa3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "nodemon": "^3.0.1"
+  }
+}
