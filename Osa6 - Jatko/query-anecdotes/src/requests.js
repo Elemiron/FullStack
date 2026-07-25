@@ -20,6 +20,12 @@ export const createAnecdote = async (newAnecdote) => {
     body: JSON.stringify(newAnecdote),
   })
 
+   // Tehtävä 6.21, Jos palvelin palauttaa virheen, välitetään se React Queryn onError-käsittelijälle,
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+
   return await response.json()
 }
 

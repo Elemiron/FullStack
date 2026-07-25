@@ -40,6 +40,15 @@ const newAnecdoteMutation = useMutation({
       setNotification('')
     }, 5000)
   },
+
+  // Näytetään virheilmoitus, jos uuden anekdootin lisääminen epäonnistuu.
+  onError: (error) => {
+    setNotification(error.error)
+
+    setTimeout(() => {
+    setNotification('')
+    }, 5000)
+  }
 })
 
 // Päivittää anekdootin (äänestys)
