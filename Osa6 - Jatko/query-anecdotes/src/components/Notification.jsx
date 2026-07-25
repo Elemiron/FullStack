@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import NotificationContext from '../NotificationContext'
+import useNotify from '../hooks/useNotify'
 
 const Notification = () => {
-  // Haetaan nykyinen notifikaatio Context API:n kautta
-  const { notification } = useContext(NotificationContext)
+  // Haetaan notifikaatio custom hookin kautta.
+  const { notification } = useNotify()
 
   const style = {
     border: 'solid',

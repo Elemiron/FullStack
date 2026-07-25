@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import NotificationContext from '../NotificationContext'
+import useNotify from './useNotify'
 
 // Tehtävä 6.19:
 // Siirretty React Queryyn liittyvä logiikka omaan custom hookiin,
@@ -14,7 +13,7 @@ import {
 
 export const useAnecdotes = () => {
   const queryClient = useQueryClient()
-  const { setNotification } = useContext(NotificationContext)
+  const { setNotification } = useNotify()
 
 // Hakee anekdootit palvelimelta
   const result = useQuery({
