@@ -1,36 +1,35 @@
-import { useQuery } from '@tanstack/react-query'
-
+// Käytetään custom hookia, joka huolehtii
+// anekdoottien hausta sekä niiden lisäämisestä ja päivittämisestä
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import { getAnecdotes } from './requests'
+import { useAnecdotes } from './hooks/useAnecdotes' 
+
 
 const App = () => {
-  const handleVote = (anecdote) => {
-    console.log('vote')
-  }
+  //const { anecdotes, isPending, addAnecdote, voteAnecdote } = useAnecdotes(),koodi on siirretty useAnecdotes hookiin
+  const { anecdotes, isPending, isError, addAnecdote, voteAnecdote } = useAnecdotes() //6.19 tehtävää varten
+  
+// Välittää äänestyksen custom hookille
+const handleVote = (anecdote) => {
+  voteAnecdote(anecdote)
+}
 
-  const result = useQuery({
-    queryKey: ['anecdotes'],
-    queryFn: getAnecdotes,
-    retry: false
-  })
+  if (isPending) {
+  return <div>loading data...</div>
+}
 
-  if (result.isPending) {
-    return <div>loading data...</div>
-  }
-
-  if (result.isError) {
+  //if (result.isError) { Vaihdettu 6.19 tehtävää varten
+  if (isError) {
     return <div>anecdote service not available due to problems in server</div>
   }
-
-  const anecdotes = result.data
 
   return (
     <div>
       <h3>Anecdote app</h3>
 
       <Notification />
-      <AnecdoteForm />
+      {/* <AnecdoteForm newAnecdoteMutation={newAnecdoteMutation} /> */}
+      <AnecdoteForm addAnecdote={addAnecdote} />
 
       {anecdotes.map((anecdote) => (
         <div key={anecdote.id}>

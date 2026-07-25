@@ -9,3 +9,30 @@ export const getAnecdotes = async () => {
 
   return await response.json()
 }
+
+//6.17 tehtävää varte
+export const createAnecdote = async (newAnecdote) => {
+  const response = await fetch(baseUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newAnecdote),
+  })
+
+  return await response.json()
+}
+
+//6.18 tehtävää varten
+export const updateAnecdote = async (updatedAnecdote) => {
+  const response = await fetch(`${baseUrl}/${updatedAnecdote.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedAnecdote),
+  })
+
+  return await response.json()
+}
+

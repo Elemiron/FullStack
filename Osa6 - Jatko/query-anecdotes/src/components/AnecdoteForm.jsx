@@ -1,9 +1,17 @@
-const AnecdoteForm = () => {
+//const AnecdoteForm = ({ newAnecdoteMutation }) => { Muuttunut 6.19 tehtävää varten
+const AnecdoteForm = ({ addAnecdote }) => {
   const onCreate = (event) => {
     event.preventDefault()
+
     const content = event.target.anecdote.value
     event.target.reset()
-    console.log('new anecdote')
+
+    //newAnecdoteMutation.mutate({
+    //  content,
+    //  votes: 0,
+    //})
+  //addAnecdote(content) Muuttunut 6.19 tehtävää varten
+    addAnecdote(content)
   }
 
   return (
