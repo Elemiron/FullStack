@@ -34,10 +34,20 @@ export const useAnecdotes = () => {
     anecdoteService.getAll().then(data => {
       setAnecdotes(data)
     })
-  }, [])
+  },
+   [])
+
+// Lisää uuden anekdootin palvelimelle
+// ja päivittää paikallisen tilan.
+const addAnecdote = async (anecdote) => {
+const createdAnecdote = await anecdoteService.createNew(anecdote)
+
+  setAnecdotes(anecdotes.concat(createdAnecdote))
+}
 
   return {
     anecdotes,
+    addAnecdote
   }
 }
 

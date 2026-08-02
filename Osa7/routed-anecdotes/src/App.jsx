@@ -7,37 +7,29 @@ import CreateNew from './components/CreateNew'
 import { useAnecdotes } from './hooks'
 
 const App = () => {
-  // Tehtävä 7.4:
-  // Haetaan anekdootit palvelimelta custom hookin avulla.
-  const { anecdotes } = useAnecdotes()
+  // Tehtävä 7.5:
+  // Haetaan sekä anekdootit että lisäysfunktio custom hookista
+  const { anecdotes, addAnecdote } = useAnecdotes()
 
-  // Väliaikainen dummy-funktio.
-  // Varsinainen toteutus tehdään tehtävässä 7.5.
-  const addAnecdote = () => {}
-
-  return (
+  return ( //Muokattu itselleen selkeämmäksi
     <Router>
       <div>
         <h1>Software anecdotes</h1>
         <Menu />
-
         <Routes>
           <Route
             path="/"
             element={<AnecdoteList anecdotes={anecdotes} />}
           />
-
           <Route
             path="/create"
             element={<CreateNew addAnecdote={addAnecdote} />}
           />
-
           <Route
             path="/about"
             element={<About />}
           />
         </Routes>
-
         <Footer />
       </div>
     </Router>
