@@ -10,12 +10,19 @@ export const useField = (type) => {
     setValue(event.target.value)
   }
 
+  // Tyhjentää lomakekentän arvon
+  const reset = () => {
+    setValue('')
+  }
+
   return {
     type,
     value,
-    onChange
+    onChange,
+    reset
   }
 }
+
 
 // modules can have several named exports
 export const useAnotherHook = () => {
