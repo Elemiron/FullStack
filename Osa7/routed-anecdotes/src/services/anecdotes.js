@@ -24,4 +24,16 @@ const createNew = async (object) => {
   return await response.json()
 }
 
-export default { getAll, createNew }
+// Tehtävä 7.6:
+// Poistaa anekdootin palvelimelta.
+const deleteAnecdote = async (id) => {
+  const response = await fetch(`${baseUrl}/${id}`, {
+    method: 'DELETE',
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to delete anecdote')
+  }
+}
+
+export default { getAll, createNew, deleteAnecdote }

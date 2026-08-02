@@ -1,14 +1,19 @@
 import { useNavigate } from 'react-router-dom'
-import { useField } from '../hooks'
+import { useField, useAnecdotes } from '../hooks'
 
-const CreateNew = ({ addAnecdote }) => {
+const CreateNew = () => {
   // Tehtävä 7.1:
   // Lomakkeen kenttien tila hallitaan useField-custom hookilla.
   const content = useField('text')
   const author = useField('text')
   const info = useField('text')
 
+// Tehtävä 7.6:
+// Haetaan uuden anekdootin lisäysfunktio suoraan custom hookista.
+  const { addAnecdote } = useAnecdotes()
+
   const navigate = useNavigate()
+  
 
   // Luo uuden anekdootin lomakkeen arvoista
   // ja siirtyy takaisin etusivulle.

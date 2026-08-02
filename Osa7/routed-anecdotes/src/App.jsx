@@ -4,12 +4,8 @@ import AnecdoteList from './components/AnecdoteList'
 import About from './components/About'
 import Footer from './components/Footer'
 import CreateNew from './components/CreateNew'
-import { useAnecdotes } from './hooks'
 
 const App = () => {
-  // Tehtävä 7.5:
-  // Haetaan sekä anekdootit että lisäysfunktio custom hookista
-  const { anecdotes, addAnecdote } = useAnecdotes()
 
   return ( //Muokattu itselleen selkeämmäksi
     <Router>
@@ -19,11 +15,11 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<AnecdoteList anecdotes={anecdotes} />}
+            element={<AnecdoteList/>}
           />
           <Route
             path="/create"
-            element={<CreateNew addAnecdote={addAnecdote} />}
+            element={<CreateNew/>}
           />
           <Route
             path="/about"
