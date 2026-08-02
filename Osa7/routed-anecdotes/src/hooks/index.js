@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import anecdoteService from '../services/anecdotes'
 // Tehtävä 7.1
 // Custom hook yhden lomakekentän tilan hallintaan
 // Hook palauttaa kentän tyypin, arvon ja onChange-käsittelijän
@@ -20,6 +21,23 @@ export const useField = (type) => {
     value,
     onChange,
     reset
+  }
+}
+
+// Tehtävä 7.4:
+// Custom hook hakee kaikki anekdootit palvelimelta
+// ja palauttaa ne komponenttien käyttöön
+export const useAnecdotes = () => {
+  const [anecdotes, setAnecdotes] = useState([])
+
+  useEffect(() => {
+    anecdoteService.getAll().then(data => {
+      setAnecdotes(data)
+    })
+  }, [])
+
+  return {
+    anecdotes,
   }
 }
 
