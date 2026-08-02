@@ -1,3 +1,6 @@
+// Lomake uuden anekdootin luomiseen.
+// Varsinainen tallennus tehdään custom hookin kautta
+
 //const AnecdoteForm = ({ newAnecdoteMutation }) => { Muuttunut 6.19 tehtävää varten
 const AnecdoteForm = ({ addAnecdote }) => {
   const onCreate = (event) => {
@@ -10,7 +13,8 @@ const AnecdoteForm = ({ addAnecdote }) => {
     //  content,
     //  votes: 0,
     //})
-  //addAnecdote(content) Muuttunut 6.19 tehtävää varten
+  //addAnecdote(content) Muuttunut 6.19 tehtävää varten, lisää palvelimelle uuden anekdootin
+
     addAnecdote(content)
   }
 
